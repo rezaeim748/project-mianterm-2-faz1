@@ -4,6 +4,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class GUI {
     private JFrame enterFrame ;
@@ -235,6 +237,7 @@ public class GUI {
         JTextField usernameTextField = new JTextField() ;
         usernameTextField.setSize(150, 40) ;
         usernameTextField.setLocation(200, 10);
+        addKeyListenerToJTextField(usernameTextField) ;
 
         JLabel passwordLabel = new JLabel("Password : ") ;
         passwordLabel.setSize(150, 40) ;
@@ -243,10 +246,12 @@ public class GUI {
         JTextField passwordTextField = new JTextField() ;
         passwordTextField.setSize(150, 40) ;
         passwordTextField.setLocation(200, 60) ;
+        addKeyListenerToJTextField(passwordTextField) ;
 
         JButton OKButton = new JButton("OK") ;
         OKButton.setSize(100, 30) ;
         OKButton.setLocation(150, 110) ;
+        addActionListenerToStudentSignOutOKButton(OKButton, usernameTextField, passwordTextField) ;
 
 
         studentSignOutFrame.add(usernameLabel) ;
@@ -364,17 +369,28 @@ public class GUI {
         });
     }
 
-    public void addActionListenerToStudentSignInOKButton (JButton btn, JTextField usernameTextField, JTextField passwordTextField){
+    public void addActionListenerToStudentSignOutOKButton (JButton btn, JTextField usernameTextField, JTextField passwordTextField){
         String username = usernameTextField.getText() ;
         String password = passwordTextField.getText() ;
         btn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (password.length() >= 8){
-                    studentFrame.setVisible(false) ;
+                    studentSignOutFrame.setVisible(false) ;
                 }
             }
         });
+    }
+
+    public void addKeyListenerToJTextField (JTextField textField){
+        textField.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                String temp = textField.getText() ;
+                temp += (KeyEvent.getExtendedKeyCodeForChar(e.getKeyCode()) + "").substring(1) ;
+                textField.setText(temp) ;
+            }
+        }) ;
     }
 
 
