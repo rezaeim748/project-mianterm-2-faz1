@@ -364,5 +364,18 @@ public class GUI {
         });
     }
 
+    public void addActionListenerToStudentSignInOKButton (JButton btn, JTextField usernameTextField, JTextField passwordTextField){
+        String username = usernameTextField.getText() ;
+        String password = passwordTextField.getText() ;
+        btn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (password.length() >= 8){
+                    studentFrame.setVisible(false) ;
+                }
+            }
+        });
+    }
+
 
 }
