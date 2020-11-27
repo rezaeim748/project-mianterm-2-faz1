@@ -41,6 +41,7 @@ public class GUI {
         setAdminSignInFrameInfo() ;
         setStudentSignOutFrameInfo() ;
         setTeacherSignOutFrameInfo() ;
+        
 
 
         enterFrame.setVisible(true) ;
@@ -237,7 +238,7 @@ public class GUI {
         JTextField usernameTextField = new JTextField() ;
         usernameTextField.setSize(150, 40) ;
         usernameTextField.setLocation(200, 10);
-        addKeyListenerToJTextField(usernameTextField) ;
+        addKeyListenerToSignOutJTextField(usernameTextField) ;
 
         JLabel passwordLabel = new JLabel("Password : ") ;
         passwordLabel.setSize(150, 40) ;
@@ -246,7 +247,7 @@ public class GUI {
         JTextField passwordTextField = new JTextField() ;
         passwordTextField.setSize(150, 40) ;
         passwordTextField.setLocation(200, 60) ;
-        addKeyListenerToJTextField(passwordTextField) ;
+        addKeyListenerToSignOutJTextField(passwordTextField) ;
 
         JButton OKButton = new JButton("OK") ;
         OKButton.setSize(100, 30) ;
@@ -276,6 +277,7 @@ public class GUI {
         JTextField usernameTextField = new JTextField() ;
         usernameTextField.setSize(150, 40) ;
         usernameTextField.setLocation(200, 10);
+        addKeyListenerToSignOutJTextField(usernameTextField) ;
 
         JLabel passwordLabel = new JLabel("Password : ") ;
         passwordLabel.setSize(150, 40) ;
@@ -284,10 +286,12 @@ public class GUI {
         JTextField passwordTextField = new JTextField() ;
         passwordTextField.setSize(150, 40) ;
         passwordTextField.setLocation(200, 60) ;
+        addKeyListenerToSignOutJTextField(passwordTextField) ;
 
         JButton OKButton = new JButton("OK") ;
         OKButton.setSize(100, 30) ;
         OKButton.setLocation(150, 110) ;
+        addActionListenerToTeacherSignOutOKButton(OKButton, usernameTextField, passwordTextField) ;
 
 
         teacherSignOutFrame.add(usernameLabel) ;
@@ -370,19 +374,39 @@ public class GUI {
     }
 
     public void addActionListenerToStudentSignOutOKButton (JButton btn, JTextField usernameTextField, JTextField passwordTextField){
-        String username = usernameTextField.getText() ;
-        String password = passwordTextField.getText() ;
         btn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                String username = usernameTextField.getText() ;
+                String password = passwordTextField.getText() ;
                 if (password.length() >= 8){
                     studentSignOutFrame.setVisible(false) ;
+                    usernameTextField.setText("") ;
+                    passwordTextField.setText("") ;
                 }
             }
         });
     }
 
-    public void addKeyListenerToJTextField (JTextField textField){
+    public void addActionListenerToTeacherSignOutOKButton (JButton btn, JTextField usernameTextField, JTextField passwordTextField){
+        btn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String username = usernameTextField.getText() ;
+                String password = passwordTextField.getText() ;
+                if (password.length() >= 8){
+                    teacherSignOutFrame.setVisible(false) ;
+                    usernameTextField.setText("") ;
+                    passwordTextField.setText("") ;
+                }
+            }
+        });
+    }
+
+
+
+
+    public void addKeyListenerToSignOutJTextField (JTextField textField){
         textField.addKeyListener(new KeyAdapter() {
             @Override
             public void keyTyped(KeyEvent e) {
