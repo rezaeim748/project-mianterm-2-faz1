@@ -234,6 +234,7 @@ public class StudentProfile {
         btn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                // removing previous panel ...
                 studentFrame.add(personal, BorderLayout.CENTER) ;
             }
         });

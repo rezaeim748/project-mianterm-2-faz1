@@ -16,7 +16,7 @@ public class AdminProfile {
 
 
     public AdminProfile (){
-
+        setAdminProfileInfo() ;
     }
 
 
