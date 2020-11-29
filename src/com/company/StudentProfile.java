@@ -2,6 +2,8 @@ package com.company;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class StudentProfile {
     private JFrame studentFrame ;
@@ -17,6 +19,10 @@ public class StudentProfile {
         setStudentFrameInfo() ;
 
 
+    }
+
+    public void setVisibility (boolean visibility){
+        studentFrame.setVisible(visibility) ;
     }
 
     public void setStudentFrameInfo (){
@@ -35,31 +41,38 @@ public class StudentProfile {
         mealReserve = new JPanel() ;
         classChoosing = new JPanel() ;
 
-
         addColumnComponents() ;
         addPersonalComponents() ;
         addClassesComponents() ;
         addAccountComponents() ;
         addMealReserveComponents() ;
-        // ...
+        addClassChoosingComponents() ;
+
+        studentFrame.add(column, BorderLayout.EAST) ;
+        studentFrame.add(personal, BorderLayout.CENTER) ;
     }
 
     public void addColumnComponents (){
         column.setLayout(new GridLayout(5, 1)) ;
         JButton btn = new JButton() ;
         btn.setText("personal") ;
+        addActionListenerToPersonalButton(btn);
         column.add(btn) ;
 
         btn = new JButton("classes") ;
+        addActionListenerToClassesButton(btn);
         column.add(btn) ;
 
         btn = new JButton("account") ;
+        addActionListenerToAccountButton(btn);
         column.add(btn) ;
 
         btn = new JButton("mealReserve") ;
+        addActionListenerToMealReserveButton(btn);
         column.add(btn) ;
 
         btn = new JButton("classChoosing") ;
+        addActionListenerToClassChoosingButton(btn);
         column.add(btn) ;
     }
 
@@ -181,10 +194,83 @@ public class StudentProfile {
 
     public void addClassChoosingComponents (){
         classChoosing.setLayout(new GridLayout(2, 2)) ;
-        
+        JLabel label = new JLabel("Units number : ") ;
+        classChoosing.add(label) ;
+
+        label = new JLabel() ;
+        classChoosing.add(label) ;
+
+        JButton btn = new JButton("Your classes") ;
+        classChoosing.add(btn) ;
+
+        btn = new JButton("Choose new class") ;
+        classChoosing.add(btn) ;
     }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    public void addActionListenerToPersonalButton (JButton btn){
+        btn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                studentFrame.add(personal, BorderLayout.CENTER) ;
+            }
+        });
+    }
+    public void addActionListenerToClassesButton (JButton btn){
+        btn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                studentFrame.add(classes, BorderLayout.CENTER) ;
+            }
+        });
+    }
+    public void addActionListenerToAccountButton (JButton btn) {
+        btn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                studentFrame.add(account, BorderLayout.CENTER) ;
+            }
+        });
+    }
+    public void addActionListenerToMealReserveButton (JButton btn){
+        btn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                studentFrame.add(mealReserve, BorderLayout.CENTER) ;
+            }
+        });
+    }
+    public void addActionListenerToClassChoosingButton (JButton btn){
+        btn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                studentFrame.add(classChoosing, BorderLayout.CENTER) ;
+            }
+        });
+    }
 
 
 }

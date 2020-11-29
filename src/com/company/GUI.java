@@ -16,9 +16,9 @@ public class GUI {
     private JFrame studentSignInFrame ;
     private JFrame teacherSignInFrame ;
     private JFrame adminSignInFrame ;
-    private JFrame studentFrame ;
-    private JFrame teacherFrame ;
-    private JFrame adminFrame ;
+    private StudentProfile studentProfile ;
+    private TeacherProfile teacherProfile ;
+    private AdminProfile adminProfile ;
 
 
 
@@ -31,9 +31,9 @@ public class GUI {
         studentSignInFrame = new JFrame() ;
         teacherSignInFrame = new JFrame() ;
         adminSignInFrame = new JFrame() ;
-        studentFrame = new JFrame() ;
-        teacherFrame = new JFrame() ;
-        adminFrame = new JFrame() ;
+        studentProfile = new StudentProfile() ;
+        teacherProfile = new TeacherProfile() ;
+        adminProfile = new AdminProfile() ;
         setIdentityFrameToSignInInfo() ;
         setIdentityFrameToSignOutInfo() ;
         setStudentSignInFrameInfo() ;
@@ -142,6 +142,7 @@ public class GUI {
         JButton OKButton = new JButton("OK") ;
         OKButton.setSize(100, 30) ;
         OKButton.setLocation(150, 110) ;
+        addActionListenerToStudentSignInOKButton(OKButton, usernameTextField, passwordTextField) ;
 
 
         studentSignInFrame.add(usernameLabel) ;
@@ -417,5 +418,18 @@ public class GUI {
         }) ;
     }
 
+
+
+    public void addActionListenerToStudentSignInOKButton (JButton btn, JTextField usernameTextField, JTextField passwordTextField){
+        btn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String username = usernameTextField.getText() ;
+                String password = passwordTextField.getText() ;
+                // checking conditions ...
+                studentProfile.setVisibility(true) ;
+            }
+        });
+    }
 
 }
