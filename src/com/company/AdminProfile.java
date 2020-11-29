@@ -2,6 +2,8 @@ package com.company;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.HierarchyBoundsAdapter;
 
 public class AdminProfile {
@@ -15,6 +17,11 @@ public class AdminProfile {
 
     public AdminProfile (){
 
+    }
+
+
+    public void setVisibility (boolean visibility){
+        adminFrame.setVisible(visibility) ;
     }
 
 
@@ -39,21 +46,26 @@ public class AdminProfile {
         addListsComponents() ;
         addAddMemberComponents() ;
 
-        
+        adminFrame.add(column, BorderLayout.EAST) ;
+        adminFrame.add(personal, BorderLayout.CENTER) ;
     }
 
     public void addColumnComponents (){
         column.setLayout(new GridLayout(4, 1)) ;
         JButton btn = new JButton("personal") ;
+        addActionListenerToPersonalButton(btn) ;
         column.add(btn) ;
 
         btn = new JButton("mealSchedule") ;
+        addActionListenerToMealScheduleButton(btn) ;
         column.add(btn) ;
 
         btn = new JButton("lists") ;
+        addActionListenerToListsButton(btn) ;
         column.add(btn) ;
 
         btn = new JButton("addMember") ;
+        addActionListenerToAddMemberButton(btn) ;
         column.add(btn) ;
     }
 
@@ -152,4 +164,50 @@ public class AdminProfile {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    public void addActionListenerToPersonalButton (JButton btn){
+        btn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                adminFrame.add(personal, BorderLayout.CENTER) ;
+            }
+        });
+    }
+    public void addActionListenerToMealScheduleButton (JButton btn){
+        btn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                adminFrame.add(mealSchedule, BorderLayout.CENTER) ;
+            }
+        });
+    }
+    public void addActionListenerToListsButton (JButton btn){
+        btn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                adminFrame.add(lists, BorderLayout.CENTER) ;
+            }
+        });
+    }
+    public void addActionListenerToAddMemberButton (JButton btn){
+        btn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                adminFrame.add(addMember, BorderLayout.CENTER) ;
+            }
+        });
+    }
 }

@@ -215,6 +215,7 @@ public class GUI {
         JButton OKButton = new JButton("OK") ;
         OKButton.setSize(100, 30) ;
         OKButton.setLocation(150, 110) ;
+        addActionListenerToAdminSignInOKButton(OKButton, usernameTextField, passwordTextField) ;
 
 
         adminSignInFrame.add(usernameLabel) ;
@@ -428,6 +429,18 @@ public class GUI {
                 String password = passwordTextField.getText() ;
                 // checking conditions ...
                 studentProfile.setVisibility(true) ;
+            }
+        });
+    }
+
+    public void addActionListenerToAdminSignInOKButton (JButton btn, JTextField usernameTextField, JTextField passwordTextField){
+        btn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String username = usernameTextField.getText() ;
+                String password = passwordTextField.getText() ;
+                // checking conditions ...
+                adminProfile.setVisibility(true) ;
             }
         });
     }
