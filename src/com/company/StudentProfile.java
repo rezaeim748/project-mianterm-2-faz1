@@ -54,8 +54,7 @@ public class StudentProfile {
 
     public void addColumnComponents (){
         column.setLayout(new GridLayout(5, 1)) ;
-        JButton btn = new JButton() ;
-        btn.setText("personal") ;
+        JButton btn = new JButton("personal") ;
         addActionListenerToPersonalButton(btn);
         column.add(btn) ;
 

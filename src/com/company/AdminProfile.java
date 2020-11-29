@@ -1,4 +1,155 @@
 package com.company;
 
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.HierarchyBoundsAdapter;
+
 public class AdminProfile {
+    private JFrame adminFrame ;
+    private JPanel column ;
+    private JPanel personal ;
+    private JPanel mealSchedule ;
+    private JPanel lists ;
+    private JPanel addMember ;
+
+
+    public AdminProfile (){
+
+    }
+
+
+    public void setAdminProfileInfo (){
+        adminFrame = new JFrame() ;
+        adminFrame.setTitle("Admin profile") ;
+        adminFrame.setSize(1000, 600) ;
+        adminFrame.setLocation(100, 100) ;
+        adminFrame.setLayout(new BorderLayout()) ;
+        addAdminFrameComponents() ;
+    }
+    public void addAdminFrameComponents (){
+        column = new JPanel() ;
+        personal = new JPanel() ;
+        mealSchedule = new JPanel() ;
+        lists = new JPanel() ;
+        addMember = new JPanel() ;
+
+        addColumnComponents() ;
+        addPersonalComponents() ;
+        addMealScheduleComponents() ;
+        addListsComponents() ;
+        addAddMemberComponents() ;
+
+        
+    }
+
+    public void addColumnComponents (){
+        column.setLayout(new GridLayout(4, 1)) ;
+        JButton btn = new JButton("personal") ;
+        column.add(btn) ;
+
+        btn = new JButton("mealSchedule") ;
+        column.add(btn) ;
+
+        btn = new JButton("lists") ;
+        column.add(btn) ;
+
+        btn = new JButton("addMember") ;
+        column.add(btn) ;
+    }
+
+    public void addPersonalComponents (){
+        personal.setLayout(new GridLayout(3, 2)) ;
+        JLabel label = new JLabel("Username : ") ;
+        personal.add(label) ;
+
+        label = new JLabel() ; // it comes from sign out frame
+        personal.add(label) ;
+
+        label = new JLabel("Password : ") ;
+        personal.add(label) ;
+
+        label = new JLabel() ;
+        personal.add(label) ;
+
+        JButton btn = new JButton("Change username and password") ;
+        personal.add(btn) ;
+    }
+
+    public void addMealScheduleComponents (){
+        mealSchedule.setLayout(new GridLayout(5, 3)) ;
+        JLabel label = new JLabel("Saturday : ") ;
+        mealSchedule.add(label) ;
+
+        label = new JLabel() ;
+        mealSchedule.add(label) ;
+
+        JButton btn = new JButton("Save") ;
+        mealSchedule.add(btn) ;
+
+        label = new JLabel("Sunday : ") ;
+        mealSchedule.add(label) ;
+
+        label = new JLabel() ;
+        mealSchedule.add(label) ;
+
+        btn = new JButton("Save") ;
+        mealSchedule.add(btn) ;
+
+        label = new JLabel("Monday : ") ;
+        mealSchedule.add(label) ;
+
+        label = new JLabel() ;
+        mealSchedule.add(label) ;
+
+        btn = new JButton("Save") ;
+        mealSchedule.add(btn) ;
+
+        label = new JLabel("Tuesday : ") ;
+        mealSchedule.add(label) ;
+
+        label = new JLabel() ;
+        mealSchedule.add(label) ;
+
+        btn = new JButton("Save") ;
+        mealSchedule.add(btn) ;
+
+        label = new JLabel("wednesday : ") ;
+        mealSchedule.add(label) ;
+
+        label = new JLabel() ;
+        mealSchedule.add(label) ;
+
+        btn = new JButton("Save") ;
+        mealSchedule.add(btn) ;
+    }
+
+    public void addListsComponents (){
+        lists.setLayout(new GridLayout(1, 3)) ;
+        JButton btn = new JButton("Students") ;
+        lists.add(btn) ;
+
+        btn = new JButton("Teachers") ;
+        lists.add(btn) ;
+
+        btn = new JButton("Classes") ;
+        lists.add(btn) ;
+    }
+
+    public void addAddMemberComponents (){
+        addMember.setLayout(new GridLayout(2, 1)) ;
+        JButton btn = new JButton("Student") ;
+        addMember.add(btn) ;
+
+        btn = new JButton("Teacher") ;
+        addMember.add(btn) ;
+    }
+
+
+
+
+
+
+
+
+
 }
