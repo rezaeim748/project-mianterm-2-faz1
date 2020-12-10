@@ -60,6 +60,56 @@ public class TeacherProfile {
 
     }
 
+    public void addPersonalComponents (){
+        personal.setLayout(new GridLayout(3, 2)) ;
+        JLabel label = new JLabel("Username : ") ;
+        personal.add(label) ;
+
+        label = new JLabel() ; // it comes from sign out frame
+        personal.add(label) ;
+
+        label = new JLabel("Password : ") ;
+        personal.add(label) ;
+
+        label = new JLabel() ;
+        personal.add(label) ;
+
+        JButton btn = new JButton("Change username and password") ;
+        personal.add(btn) ;
+    }
+
+    public void addClassesComponents (){
+        // undone ...
+    }
+
+    public void addAddClassComponents (){
+        addClass.setLayout(new GridLayout(4, 2)) ;
+        JLabel label = new JLabel("Class name : ") ;
+        addClass.add(label) ;
+
+        JTextField textField = new JTextField() ;
+        addClass.add(textField) ;
+
+        label = new JLabel("Units number : ") ;
+        addClass.add(label) ;
+
+        textField = new JTextField() ;
+        addClass.add(textField) ;
+
+        label = new JLabel("Class time : ") ;
+        addClass.add(label) ;
+
+        textField = new JTextField() ;
+        addClass.add(textField) ;
+
+        label = new JLabel("Capacity : ") ;
+        addClass.add(label) ;
+
+        textField = new JTextField() ;
+        addClass.add(textField) ;
+
+    }
+
 
 
 
