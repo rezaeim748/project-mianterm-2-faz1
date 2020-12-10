@@ -386,6 +386,7 @@ public class GUI {
                     studentSignOutFrame.setVisible(false) ;
                     usernameTextField.setText("") ;
                     passwordTextField.setText("") ;
+
                 }
             }
         });

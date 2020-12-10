@@ -14,9 +14,11 @@ public class StudentProfile {
     private JPanel mealReserve ;
     private JPanel classChoosing ;
     private JPanel centerPanel ;
+    // private com.company.Student student ;
 
 
     public StudentProfile (){
+        // student = new com.company.Student(username, password) ;
         centerPanel = new JPanel() ;
         setStudentProfileInfo() ;
 
