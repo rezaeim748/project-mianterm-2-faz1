@@ -13,10 +13,12 @@ public class StudentProfile {
     private JPanel account ;
     private JPanel mealReserve ;
     private JPanel classChoosing ;
+    private JPanel centerPanel ;
 
 
     public StudentProfile (){
-        setStudentFrameInfo() ;
+        centerPanel = new JPanel() ;
+        setStudentProfileInfo() ;
 
 
     }
@@ -25,7 +27,7 @@ public class StudentProfile {
         studentFrame.setVisible(visibility) ;
     }
 
-    public void setStudentFrameInfo (){
+    public void setStudentProfileInfo (){
         studentFrame = new JFrame() ;
         studentFrame.setTitle("Student profile") ;
         studentFrame.setSize(1000, 600) ;
@@ -35,8 +37,8 @@ public class StudentProfile {
     }
     public void addStudentFrameComponents (){
         column = new JPanel() ;
-        personal = new JPanel() ;
         classes = new JPanel() ;
+        personal = new JPanel() ;
         account = new JPanel() ;
         mealReserve = new JPanel() ;
         classChoosing = new JPanel() ;
@@ -49,7 +51,7 @@ public class StudentProfile {
         addClassChoosingComponents() ;
 
         studentFrame.add(column, BorderLayout.EAST) ;
-        studentFrame.add(personal, BorderLayout.CENTER) ;
+        studentFrame.add(centerPanel, BorderLayout.CENTER) ;
     }
 
     public void addColumnComponents (){
@@ -206,6 +208,13 @@ public class StudentProfile {
         classChoosing.add(btn) ;
     }
 
+    public void updateStudentFrame (JPanel panel){
+        setVisibility(false) ;
+        centerPanel = panel ;
+        setStudentProfileInfo();
+        setVisibility(true) ;
+    }
+
 
 
 
@@ -235,7 +244,7 @@ public class StudentProfile {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // removing previous panel ...
-                studentFrame.add(personal, BorderLayout.CENTER) ;
+                updateStudentFrame(personal) ;
             }
         });
     }
@@ -243,7 +252,7 @@ public class StudentProfile {
         btn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                studentFrame.add(classes, BorderLayout.CENTER) ;
+                updateStudentFrame(classes) ;
             }
         });
     }
@@ -251,7 +260,8 @@ public class StudentProfile {
         btn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                studentFrame.add(account, BorderLayout.CENTER) ;
+
+                updateStudentFrame(account) ;
             }
         });
     }
@@ -259,7 +269,8 @@ public class StudentProfile {
         btn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                studentFrame.add(mealReserve, BorderLayout.CENTER) ;
+
+                updateStudentFrame(mealReserve) ;
             }
         });
     }
@@ -267,7 +278,8 @@ public class StudentProfile {
         btn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                studentFrame.add(classChoosing, BorderLayout.CENTER) ;
+
+                updateStudentFrame(classChoosing) ;
             }
         });
     }

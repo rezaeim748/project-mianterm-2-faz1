@@ -13,9 +13,11 @@ public class AdminProfile {
     private JPanel mealSchedule ;
     private JPanel lists ;
     private JPanel addMember ;
+    private JPanel centerPanel ;
 
 
     public AdminProfile (){
+        centerPanel = new JPanel() ;
         setAdminProfileInfo() ;
     }
 
@@ -47,7 +49,7 @@ public class AdminProfile {
         addAddMemberComponents() ;
 
         adminFrame.add(column, BorderLayout.EAST) ;
-        adminFrame.add(personal, BorderLayout.CENTER) ;
+        adminFrame.add(centerPanel, BorderLayout.CENTER) ;
     }
 
     public void addColumnComponents (){
@@ -92,8 +94,8 @@ public class AdminProfile {
         JLabel label = new JLabel("Saturday : ") ;
         mealSchedule.add(label) ;
 
-        label = new JLabel() ;
-        mealSchedule.add(label) ;
+        JTextField textField = new JTextField() ;
+        mealSchedule.add(textField) ;
 
         JButton btn = new JButton("Save") ;
         mealSchedule.add(btn) ;
@@ -101,8 +103,8 @@ public class AdminProfile {
         label = new JLabel("Sunday : ") ;
         mealSchedule.add(label) ;
 
-        label = new JLabel() ;
-        mealSchedule.add(label) ;
+        textField = new JTextField() ;
+        mealSchedule.add(textField) ;
 
         btn = new JButton("Save") ;
         mealSchedule.add(btn) ;
@@ -110,8 +112,8 @@ public class AdminProfile {
         label = new JLabel("Monday : ") ;
         mealSchedule.add(label) ;
 
-        label = new JLabel() ;
-        mealSchedule.add(label) ;
+        textField = new JTextField() ;
+        mealSchedule.add(textField) ;
 
         btn = new JButton("Save") ;
         mealSchedule.add(btn) ;
@@ -119,8 +121,8 @@ public class AdminProfile {
         label = new JLabel("Tuesday : ") ;
         mealSchedule.add(label) ;
 
-        label = new JLabel() ;
-        mealSchedule.add(label) ;
+        textField = new JTextField() ;
+        mealSchedule.add(textField) ;
 
         btn = new JButton("Save") ;
         mealSchedule.add(btn) ;
@@ -128,8 +130,8 @@ public class AdminProfile {
         label = new JLabel("wednesday : ") ;
         mealSchedule.add(label) ;
 
-        label = new JLabel() ;
-        mealSchedule.add(label) ;
+        textField = new JTextField() ;
+        mealSchedule.add(textField) ;
 
         btn = new JButton("Save") ;
         mealSchedule.add(btn) ;
@@ -154,6 +156,13 @@ public class AdminProfile {
 
         btn = new JButton("Teacher") ;
         addMember.add(btn) ;
+    }
+
+    public void updateAdminFrame (JPanel panel){
+        setVisibility(false) ;
+        centerPanel = panel ;
+        setAdminProfileInfo();
+        setVisibility(true) ;
     }
 
 
@@ -182,7 +191,7 @@ public class AdminProfile {
         btn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                adminFrame.add(personal, BorderLayout.CENTER) ;
+                updateAdminFrame(personal);
             }
         });
     }
@@ -190,7 +199,7 @@ public class AdminProfile {
         btn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                adminFrame.add(mealSchedule, BorderLayout.CENTER) ;
+                updateAdminFrame(mealSchedule) ;
             }
         });
     }
@@ -198,7 +207,7 @@ public class AdminProfile {
         btn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                adminFrame.add(lists, BorderLayout.CENTER) ;
+                updateAdminFrame(lists) ;
             }
         });
     }
@@ -206,7 +215,7 @@ public class AdminProfile {
         btn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                adminFrame.add(addMember, BorderLayout.CENTER) ;
+                updateAdminFrame(addMember) ;
             }
         });
     }

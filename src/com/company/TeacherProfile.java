@@ -11,8 +11,10 @@ public class TeacherProfile {
     private JPanel personal ;
     private JPanel classes ;
     private JPanel addClass ;
+    private JPanel centerPanel ;
 
     public TeacherProfile (){
+        centerPanel = new JPanel() ;
         setTeacherProfileInfo() ;
     }
 
@@ -41,7 +43,7 @@ public class TeacherProfile {
         addAddClassComponents() ;
 
         teacherFrame.add(column, BorderLayout.EAST) ;
-        teacherFrame.add(personal, BorderLayout.CENTER) ;
+        teacherFrame.add(centerPanel, BorderLayout.CENTER) ;
     }
 
     public void addColumnComponents (){
@@ -83,7 +85,7 @@ public class TeacherProfile {
     }
 
     public void addAddClassComponents (){
-        addClass.setLayout(new GridLayout(4, 2)) ;
+        addClass.setLayout(new GridLayout(5, 2)) ;
         JLabel label = new JLabel("Class name : ") ;
         addClass.add(label) ;
 
@@ -108,8 +110,17 @@ public class TeacherProfile {
         textField = new JTextField() ;
         addClass.add(textField) ;
 
+        JButton btn = new JButton("Add") ;
+        addClass.add(btn) ;
+
     }
 
+    public void updateTeacherFrame (JPanel panel){
+        setVisibility(false) ;
+        centerPanel = panel ;
+        setTeacherProfileInfo() ;
+        setVisibility(true) ;
+    }
 
 
 
@@ -148,7 +159,7 @@ public class TeacherProfile {
         btn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                teacherFrame.add(personal, BorderLayout.CENTER) ;
+                updateTeacherFrame(personal) ;
             }
         });
     }
@@ -156,7 +167,7 @@ public class TeacherProfile {
         btn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                teacherFrame.add(classes, BorderLayout.CENTER) ;
+                updateTeacherFrame(classes) ;
             }
         });
     }
@@ -164,7 +175,7 @@ public class TeacherProfile {
         btn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                teacherFrame.add(addClass, BorderLayout.CENTER) ;
+                updateTeacherFrame(addClass) ;
             }
         });
     }
